@@ -2,10 +2,10 @@ const Sequelize = require('sequelize');
 
 const db = new Sequelize(
     'daurdb',
-    'root',
+    'daurin',
     '',
     {
-        host: 34.101.188.61,
+        host: '34.101.106.246',
         dialect: 'mysql',
     }
 )
