@@ -5,7 +5,6 @@ const db = require("./db/db");
 
 const server = http.createServer(app);
 
-
 const start = () => {
   try {
     try {
@@ -16,10 +15,10 @@ const start = () => {
       console.log(err)
     }
     server.listen(PORT, () => {
-      console.log(`🚀 [SERVER] is running on port http://localhost:${PORT}`);
+      console.log(` [SERVER] is running on port http://localhost:${PORT}`);
     });
   } catch (error) {
-    console.log(`⚠️ [ERROR], ${error}`);
+    console.log(` [ERROR], ${error}`);
   }
 };
 
