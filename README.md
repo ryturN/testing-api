@@ -1,10 +1,5 @@
 <h1 align="center">DaurinPoin - Documentation API</h1>
 
-
-
-
-<h1 align="center">Architekture Overview</h1>
-
 # Built with
 - Express.js
 - MySQL
