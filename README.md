@@ -55,12 +55,11 @@ npm run dev
 
 
 #History
-# Config
 [GET] https://daurin-api/histories/ #hisrory shop
 
 
 #News artikel berita
-[GET] https://daurin-api/news/ #hisrory shop
+[GET] https://daurin-api/news/ #news artikel
 ```
 
 
