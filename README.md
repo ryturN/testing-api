@@ -1,6 +1,6 @@
 <h1 align="center">DaurinPoin - Documentation API</h1>
 
-# Built with
+# Tech Used 
 - Express.js
 - MySQL
 - Sequelize
