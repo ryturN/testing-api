@@ -107,7 +107,7 @@ npm run dev
 - **Response Body:**
   ```json
   {
-     "status": "success",
+    "status": "success",
     "message": "login success",
     "data": {
         "id_user": 1,
@@ -274,7 +274,7 @@ npm run dev
 - **Response Body:**
   ```json
    {
-         "status": "success",
+    "status": "success",
     "message": "Get all histories success",
     "data": [
         {
