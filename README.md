@@ -234,7 +234,7 @@ npm run dev
   ```
 
 
-### 9. Get All Shop
+### 7. Get All Shop
 
 - **Method:** `GET`
 - **Path:** `/shops/`
@@ -274,7 +274,7 @@ npm run dev
           
   ```
 
-### 10. Get All history
+### 8. Get All history
 
 - **Method:** `GET`
 - **Path:** `/histories/`
@@ -307,7 +307,7 @@ npm run dev
    
   ```
   
-### 11. Get news
+### 9. Get news
 
 - **Method:** `GET`
 - **Path:** `/news/`
