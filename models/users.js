@@ -1,24 +1,32 @@
-const {DataTYpes, DataTypes} = require('sequelize');
+const { DataTypes } = require('sequelize');
 const db = require('../db/db');
 
 const User = db.define('user', {
-    user_id:{
+    id_user: {
         type: DataTypes.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true,
     },
-    username: {
-        type: DataTypes.STRING,
-    },
-    password: {
+    nama: {
         type: DataTypes.STRING,
     },
     email: {
         type: DataTypes.STRING,
     },
-})
+    password: {
+        type: DataTypes.STRING,
+    },
+    point: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+    },
+    image_url: {
+        type: DataTypes.STRING,
+    },
+});
 
 User.sync().then(() => {
-    console.log('table created')
-})
+    console.log('table created');
+});
 
 module.exports = User;

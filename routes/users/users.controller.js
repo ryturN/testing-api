@@ -1,9 +1,10 @@
 const User = require('../../models/users');
+const createUsers = require('../../models/createUsers');
 const auth = require('../../controller/authFunction');
 exports.login = async (req, res) => {
   try {
-    const { username, password } = req.body;
-    const user = await auth.login(username, password);
+    const { email, password } = req.body;
+    const user = await auth.login(email, password);
     if (!user) {
       return res.status(400).json({ status: 'fail', message: 'username or password is wrong' });
     }
@@ -15,17 +16,24 @@ exports.login = async (req, res) => {
 
 exports.register = async (req, res) => {
   try {
-    const { username, email, password, confirmPassword } = req.body;
-    if (password !== confirmPassword) {
-      return res.status(400).json({ status: 'fail', message: 'password and confirm password is not match' });
-    }
-    const userId = Math.floor(Math.random() * 1000000000);
-    auth.register(userId, username, email, password);
-    return res.status(200).json({ status: 'success', message: 'register success' });
+      const { nama, email, password } = req.body;
+      const newUser = await createUsers(nama, email, password);
+
+      return res.status(200).json({
+          status: 'success',
+          message: 'User was registered successfully!',
+          data: {
+              email: newUser.email,
+              username: newUser.username,
+              point: newUser.point,
+              image_url: newUser.image_url,
+          },
+      });
   } catch (error) {
-    throw error
+      throw error;
   }
-}
+};
+
 
 exports.getAllUser = async (req, res) => {
   try {
@@ -49,11 +57,11 @@ exports.getUserById = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const userId = req.params.userId;
-    const user = await User.findOne({ where: { user_id: userId } });
-    const { username, email } = req.body;
+    const user = await User.findOne({ where: { id_user: userId } }); 
+    const { email, password } = req.body;
     const updatedUser = {
-      username,
-      email
+      email,
+      password
     }
     await user.update(updatedUser);
     return res.status(201).json({ status: 'success', message: 'update user success' });
@@ -61,3 +69,4 @@ exports.updateUser = async (req, res) => {
     throw error
   }
 }
+

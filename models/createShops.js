@@ -1,7 +1,7 @@
 const Shop = require("./shops");
 
 
-const createShops = async (name, voucher, price) => {
+const createShops = async ( name, voucher, price) => {
     try {
         const newShop = await Shop.create({
             name,

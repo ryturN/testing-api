@@ -1,22 +1,29 @@
-const History = require('../../models/histories');
-const createHistory = require('../../models/createHistories');
+// const History = require('../../models/histories');
+const Shop = require('../../models/shops');
 
-
-exports.createHistory = async (req, res) => {
-  try {
-    const { user_id, shop_id } = req.body;
-    const newHistory = await History.create({ user_id, shop_id });
-    return res.status(201).json({ status: 'success', message: 'History created successfully', data: newHistory });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ status: 'error', message: 'Internal server error' });
-  }
-};
+// const createHistory = require('../../models/createHistories');
 
 exports.getAllHistory = async (req, res) => {
   try {
-    const histories = await History.findAll();
-    return res.status(200).json({ status: 'success', message: 'Get all histories success', data: histories });
+    const histories = await Shop.findAll({
+      // attributes: ['shop_id', 'name', 'voucher', 'price'],
+    });
+
+   
+    const result = histories.map(shop => {
+      return {
+        shop_id: shop.shop_id,
+        name: shop.name,
+        voucher: shop.voucher,
+        price: shop.price,
+      };
+    });
+
+    return res.status(200).json({
+      status: 'success',
+      message: 'Get all histories success',
+      data: result,
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ status: 'error', message: 'Internal server error' });

@@ -2,15 +2,22 @@ const Shop = require('../../models/shops');
 const createShop = require('../../models/createShops');
 
 
+
 exports.createShop = async (req, res) => {
   try {
     const { name, voucher, price } = req.body;
-    const newShop = await createShop(name, voucher, price);
+    const userId = req.userId; 
+
+   
+    const newShop = await createShop(name, voucher, price, userId);
+
     return res.status(201).json({ status: 'success', message: 'shop created successfully', data: newShop });
   } catch (error) {
-    throw error;
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 };
+
 
 exports.getAllShops = async (req, res) => {
   try {
@@ -31,18 +38,26 @@ exports.getShopById = async (req, res) => {
   }
 };
 
-exports.updateShop = async (req, res) => {
+exports.redeemShop = async (req, res) => {
   try {
     const shopId = req.params.shopId;
     const shop = await Shop.findOne({ where: { shop_id: shopId } });
     const { name, voucher, price } = req.body;
-    const updatedShop = {
+    const redeemShop = {
       name,
       voucher,
       price,
     };
-    await shop.update(updatedShop);
-    return res.status(200).json({ status: 'success', message: 'update shop success' });
+    await shop.update(redeemShop);
+    return res.status(200).json({
+       status: 'success', 
+       message: 'Code successfully redeemed',
+       data: {
+         name: shop.name,
+         voucher: shop.voucher,
+         price: shop.price,
+       },
+       });
   } catch (error) {
     throw error;
   }

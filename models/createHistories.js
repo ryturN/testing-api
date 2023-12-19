@@ -1,9 +1,9 @@
 const History = require("./histories");
 
-const createHistories = async (user_id, shop_id) => {
+const createHistories = async (id_user, shop_id) => {
     try {
         const newHistory = await History.create({
-            user_id,
+            id_user,
             shop_id,
             
         });

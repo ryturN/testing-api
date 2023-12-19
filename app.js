@@ -12,6 +12,7 @@ const transactionsRouter = require("./routes/transactions/transactions.router");
 const shopRouter = require("./routes/shops/shops.router");
 const historyRouter = require("./routes/histories/histories.router");
 const directoryRouter = require('./routes/directories/directories.router');
+const newsRouter = require("./routes/news/news.router"); //
 
 
 app.use("/", indexRouter);
@@ -22,6 +23,7 @@ app.use("/transactions", transactionsRouter);
 app.use("/shops", shopRouter);
 app.use("/histories", historyRouter);  
 app.use('/directories', directoryRouter);
+app.use("/news", newsRouter); 
 
 
 module.exports = app;

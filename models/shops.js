@@ -1,4 +1,4 @@
-const {DataTYpes, DataTypes} = require('sequelize');
+const { DataTypes} = require('sequelize');
 const db = require('../db/db');
 
 const Shop = db.define('shop', {
@@ -21,6 +21,7 @@ const Shop = db.define('shop', {
 
 
 });
+
 
 Shop.sync().then(() => {
   console.log('Shop table created');

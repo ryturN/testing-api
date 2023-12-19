@@ -5,7 +5,7 @@ const db = new Sequelize(
     'daurin',
     'asty',
     {
-        host: '35.188.23.160',
+        host: '35.188.23.160', 
         dialect: 'mysql',
         
     }
