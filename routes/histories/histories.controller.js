@@ -6,7 +6,7 @@ const Shop = require('../../models/shops');
 exports.getAllHistory = async (req, res) => {
   try {
     const histories = await Shop.findAll({
-      // attributes: ['shop_id', 'name', 'voucher', 'price'],
+      attributes: ['shop_id', 'name', 'voucher', 'price'],
     });
 
    

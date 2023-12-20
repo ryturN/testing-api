@@ -6,6 +6,7 @@ const auth = require("./users.controller");
 
 // router.get('/', UserController.getAllUsers);
 router.get("/", auth.getAllUser);
+router.get("/:userId", auth.getUserById);
 router.post("/login", auth.login);
 router.post("/register", auth.register);
 router.patch("/:userId", auth.updateUser);

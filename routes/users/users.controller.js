@@ -47,7 +47,7 @@ exports.getAllUser = async (req, res) => {
 exports.getUserById = async (req, res) => {
   try {
     const userId = req.params.userId;
-    const user = await User.findOne({ where: { user_id: userId } });
+    const user = await User.findOne({ where: { id_user: userId } });
     return res.status(200).json({ status: 'success', message: 'get user by id success', data: user });
   } catch (error) {
     throw error
