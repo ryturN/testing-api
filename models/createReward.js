@@ -1,11 +1,12 @@
 const Reward = require('./rewards');
 
-const createReward = async (name, description, price) => {
+const createReward = async (name, description, price, stock) => {
   try {
     const newReward = await Reward.create({
       name,
       description,
       price,
+      stock,
 
     });
     return newReward;
