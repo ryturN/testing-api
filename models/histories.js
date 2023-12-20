@@ -1,24 +1,24 @@
 const { DataTypes} = require('sequelize');
 const db = require('../db/db');
 
-const Shop = db.define('shop', {
-  shop_id: {
+const History  = db.define('histories', {
+  History_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
 
-  id_user: {
+  shop_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
 
-  id_reward: {
+  user_id: {
   type: DataTypes.INTEGER,
   allowNull: false,
   },
 
-  jumlahProduct: {
+  price: {
     type: DataTypes.INTEGER, 
   },
 
@@ -30,8 +30,8 @@ const Shop = db.define('shop', {
 });
 
 
-Shop.sync().then(() => {
-  console.log('Shop table created');
+History.sync().then(() => {
+  console.log('History  table created');
 });
 
-module.exports = Shop;
+module.exports = History ;
