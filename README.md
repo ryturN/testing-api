@@ -54,7 +54,8 @@ npm run dev
 # Users app Daurin-api
 [POST] https://daurin-api/users/register # Register User
 [POST] https://daurin-api/users/login # Login User
-[GET] https://daurin-api/users/ # Get User Detail
+[GET] https://daurin-api/users/ # Get User 
+[GET] https://daurin-api/users/UserById # Get User id
 [PATCH] https://daurin-api.users/ # Update User Detail
 
 # Shop Daurin-api
@@ -132,7 +133,7 @@ npm run dev
   }
   ```
 
-### 3. Get User Detail
+### 3. Get User 
 
 - **Method:** `GET`
 - **Path:** `/users`
@@ -155,6 +156,32 @@ npm run dev
             "updatedAt": "2023-12-19T01:11:01.000Z"
         }
     ]
+  }
+  ```
+
+
+  ### 3. Get User By Id 
+
+- **Method:** `GET`
+- **Path:** `/users/:userId`
+- **Description:** endpoint for login users
+- **Authorization:** Bearer token from login
+- **Response Body:**
+  ```json
+  {
+    
+    "status": "success",
+    "message": "get user by id success",
+    "data": {
+        "id_user": 1,
+        "nama": "astyyuliani",
+        "email": "asty@gmail.com",
+        "password": "asty123",
+        "point": 0,
+        "image_url": "default_image_url.jpg",
+        "createdAt": "2023-12-19T03:34:27.000Z",
+        "updatedAt": "2023-12-19T03:35:36.000Z"
+    }
   }
   ```
 
