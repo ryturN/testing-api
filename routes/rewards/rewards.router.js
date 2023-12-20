@@ -1,12 +1,11 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const rewardController = require('./rewards.controller');
 
-const { getReward, addReward, updateReward, deleteReward } = require("./rewards.controller");
-const { isAdmin } = require("../../middleware/isAdmin");
 
-router.route("/").get(getReward);
-router.route("/").post(isAdmin, addReward);
-router.route("/:rewardId").put(isAdmin, updateReward);
-router.route("/:rewardId").delete(isAdmin, deleteReward);
+router.post('/', rewardController.createReward);
+router.get('/', rewardController.getAllRewards);
+router.get('/:rewardId', rewardController.getRewardById);
+
 
 module.exports = router;

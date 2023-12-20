@@ -13,6 +13,8 @@ const shopRouter = require("./routes/shops/shops.router");
 const historyRouter = require("./routes/histories/histories.router");
 const directoryRouter = require('./routes/directories/directories.router');
 const newsRouter = require("./routes/news/news.router"); //
+// const uploadRouter= require("./routes/upload/upload.router");
+// const { uploadFile } = require('../config/Storage.js');
 
 
 app.use("/", indexRouter);
@@ -24,6 +26,7 @@ app.use("/shops", shopRouter);
 app.use("/histories", historyRouter);  
 app.use('/directories', directoryRouter);
 app.use("/news", newsRouter); 
+// app.use("/upload", uploadRouter);
 
 
 module.exports = app;

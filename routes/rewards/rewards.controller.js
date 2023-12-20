@@ -1,88 +1,38 @@
-// const { rewardRef } = require("../../db/firebase");
+const Reward = require('../../models/rewards');
+const createReward = require('../../models/createReward');
 
-const getReward = async (req, res) => {
+exports.createReward = async (req, res) => {
   try {
-    const snapshot = await rewardRef.get();
-    const rewards = [];
-    snapshot.forEach((doc) => {
-      rewards.push({ id: doc.id, ...doc.data() });
-    });
-    return res.status(200).json({
-      status: {
-        code: 200,
-        message: "Success get all rewards",
-      },
-      data: rewards,
-    });
+    const { name, description, price } = req.body;
+
+    const newReward = await createReward(name, description, price);
+
+    return res.status(201).json({ status: 'success', message: 'Reward created successfully', data: newReward });
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 };
 
-const addReward = async (req, res) => {
-  const { name, description, pointValue, imageUrl } = req.body;
-  const rewardData = {
-    name,
-    description,
-    pointValue: Number(pointValue),
-    imageUrl,
-  };
-
+exports.getAllRewards = async (req, res) => {
   try {
-    const docRef = await rewardRef.add(rewardData);
-
-    return res.status(201).json({
-      status: {
-        code: 201,
-        message: "Success add reward",
-      },
-      data: {
-        id: docRef.id,
-      },
-    });
+    const rewards = await Reward.findAll();
+    return res.status(200).json({ status: 'success', message: 'Get all rewards success', data: rewards });
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 };
 
-const updateReward = async (req, res) => {
+exports.getRewardById = async (req, res) => {
   try {
     const rewardId = req.params.rewardId;
-    const reward = rewardRef.doc(rewardId);
-    console.log(reward);
-    const { name, description, pointValues, imageUrl } = req.body;
-    const updatedReward = {
-      name,
-      description,
-      pointValues,
-      imageUrl,
-    };
-    const docRef = await reward.update(updatedReward);
-    return res.status(201).json({
-      status: {
-        code: 201,
-        message: "Success update reward",
-      },
-      data: {
-        id: docRef.id,
-      },
-    });
+    const reward = await Reward.findOne({ where: { id_reward: rewardId } });
+    return res.status(200).json({ status: 'success', message: 'Get reward by id success', data: reward });
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 };
 
-const deleteReward = async (req, res) => {
-  const rewardId = req.params.rewardId;
-  const reward = rewardRef.doc(rewardId);
-  await reward.delete();
-  return res.status(201).json({
-    status: {
-      code: 201,
-      message: "Success delete reward",
-    },
-    data: null,
-  });
-};
 
-module.exports = { getReward, addReward, updateReward, deleteReward };
