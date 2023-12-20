@@ -1,9 +1,8 @@
-# Architekture Overview
+<h1 align="center"> Architecture Overview </h1>
 <img src="https://github.com/Capstone-DaurinPoin/.github/assets/100658838/4440dbd7-aa8d-4c08-8719-c4c846ac4fe0" alt="Modern Download App Instagram Post" width="900" style="display: block; margin-left: auto; margin-right: auto;">
-## Our application architecture is designed to operate in the `us-central1` region, utilizing Google Cloud services. The Android client initiates requests to Cloud Run services, which act as the backend, handling API requests and responses. Cloud Run interacts with Cloud SQL for data storage and retrieval, Cloud Storage for image storage, and Cloud Build for managing the build process. This region-specific implementation ensures low latency and optimal performance, catering to users in the `us-central1` region while leveraging the scalability and reliability of Google Cloud Platform.
+## Our application architecture is designed to operate in the `us-central1` region, utilizing Google Cloud services. The Android client initiates requests to Cloud Run services, which act as the backend, handling API requests and responses. Cloud Run interacts with Cloud SQL for data storage and retrieval, Cloud Storage for image storage, and Cloud Build for managing the build process. This region-specific implementation ensures low latency and optimal performance, catering to users in the `us-central1` region while leveraging the scalability and reliability of the Google Cloud Platform.
 
-<h1 align="center">DaurinPoin -
-   Documentation API</h1>
+<h1 align="center">DaurinPoin-Documentation API</h1>
 
 ## Tech Used 
 - Express.js
