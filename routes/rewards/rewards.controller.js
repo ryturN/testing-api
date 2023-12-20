@@ -39,11 +39,8 @@ exports.updateReward = async (req, res) => {
   try {
     const rewardId = req.params.rewardId;
     const reward = await Reward.findOne({ where: { id_reward: rewardId } });
-    const { name, description, price, stock } = req.body;
+    const { stock } = req.body;
     const updateReward = {
-      name,
-      description,
-      price,
       stock,
     };
     await reward.update(updateReward);
@@ -51,9 +48,6 @@ exports.updateReward = async (req, res) => {
       status: 'success',
       message: 'Reward successfully updated',
       data: {
-        name: reward.name,
-        description: reward.description,
-        price: reward.price,
         stock: reward.stock,
       },
     });

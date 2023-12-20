@@ -58,8 +58,9 @@ exports.updateUser = async (req, res) => {
   try {
     const userId = req.params.userId;
     const user = await User.findOne({ where: { id_user: userId } }); 
-    const { email, password } = req.body;
+    const { nama, email, password } = req.body;
     const updatedUser = {
+      nama,
       email,
       password
     }
