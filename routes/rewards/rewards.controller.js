@@ -3,9 +3,9 @@ const createReward = require('../../models/createReward');
 
 exports.createReward = async (req, res) => {
   try {
-    const { name, description, price } = req.body;
+    const { name, description, price, stock } = req.body;
 
-    const newReward = await createReward(name, description, price);
+    const newReward = await createReward(name, description, price, stock);
 
     return res.status(201).json({ status: 'success', message: 'Reward created successfully', data: newReward });
   } catch (error) {

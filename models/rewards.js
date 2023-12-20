@@ -19,6 +19,12 @@ const Reward = db.define('reward', {
     type: DataTypes.INTEGER, 
   },
 
+  stock: {
+    type: DataTypes.INTEGER, 
+  },
+
+
+
 
 
 });
