@@ -1,5 +1,5 @@
 const express = require("express");
-app = express();
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
@@ -13,8 +13,8 @@ const shopRouter = require("./routes/shops/shops.router");
 const historyRouter = require("./routes/histories/histories.router");
 const directoryRouter = require('./routes/directories/directories.router');
 const newsRouter = require("./routes/news/news.router"); //
-// const uploadRouter= require("./routes/upload/upload.router");
-// const { uploadFile } = require('../config/Storage.js');
+const uploadRouter= require("./routes/upload/uploadRouter.js");
+const uploadController = require("./routes/upload/upload.controller.js");
 
 
 app.use("/", indexRouter);
@@ -26,6 +26,7 @@ app.use("/shops", shopRouter);
 app.use("/histories", historyRouter);  
 app.use('/directories', directoryRouter);
 app.use("/news", newsRouter); 
+app.use("/api", uploadRouter);
 // app.use("/upload", uploadRouter);
 
 

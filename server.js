@@ -16,7 +16,7 @@ const start = () => {
     } catch (error) {
       console.log(err)
     }
-    server.listen(PORT, () => {
+    app.listen(PORT, () => {
       console.log(` [SERVER] is running on port http://localhost:${PORT}`);
     });
   } catch (error) {

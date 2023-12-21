@@ -1,37 +1,33 @@
-// const { googleBucket } = require("../config/storage");
+const { googleBucket } = require("../config/storage");
 
-// exports.uploadPhoto = async ({ target, fileName, file }) => {
-//     return new Promise((resolve, reject) => {
+const uploadPhoto = async ({ fileName, file }) => {
+    return new Promise((resolve, reject) => {
 
-//         if(target !== 'users' && target !== 'freelancers' && target !== 'projects'){
-//             return {
-//                 status: 'fail',
-//                 message: 'target must be users, freelancers, or projects'
-//             }
-//         }
-//         const fileBuffer = file.buffer;
+        const fileBuffer = file.buffer;
     
-//         const fileUpload = googleBucket.file(`photos/${target}/${fileName}`);
-//         const blobStream = fileUpload.createWriteStream({
-//             metadata: {
-//                 contentType: file.mimetype
-//             }
-//         });
+        const fileUpload = googleBucket.file(`photos/${fileName}`);
+        const blobStream = fileUpload.createWriteStream({
+            metadata: {
+                contentType: file.mimetype
+            }
+        });
         
-//         blobStream.on('error', (error) => {
-//             reject(error);
-//         })
+        blobStream.on('error', (error) => {
+            reject(error);
+        })
     
-//         blobStream.on('finish', () => {
-//             const response = {
-//                 status: 'success',
-//                 message: 'file uploaded successfully',
-//                 publicUrl: `https://storage.googleapis.com/${googleBucket.name}/photos/${target}/${fileName}`
-//             }
-//             resolve(response);
-//         })
+        blobStream.on('finish', () => {
+            const response = {
+                status: 'success',
+                message: 'file uploaded successfully',
+                publicUrl: `https://storage.googleapis.com/${googleBucket.name}/photos/${fileName}`
+            }
+            resolve(response);
+        })
     
-//         blobStream.end(fileBuffer);
-//     })
+        blobStream.end(fileBuffer);
+    })
     
-// }
+}
+
+module.exports = uploadPhoto;

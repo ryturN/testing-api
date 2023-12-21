@@ -15,7 +15,7 @@ exports.login = async (req, res) => {
 }
 
 exports.register = async (req, res) => {
-  try {
+  // try {
       const { nama, email, password } = req.body;
       const newUser = await createUsers(nama, email, password);
 
@@ -29,9 +29,9 @@ exports.register = async (req, res) => {
               image_url: newUser.image_url,
           },
       });
-  } catch (error) {
-      throw error;
-  }
+  // } catch (error) {
+  //     throw error;
+  // }
 };
 
 
